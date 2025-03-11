@@ -1,1 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Advent+Pro&display=swap");
 @import "tailwindcss";
+
+.advent-pro {
+  font-family: "Advent Pro", sans-serif;
+  font-weight: 500;
+  letter-spacing: 2px;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
