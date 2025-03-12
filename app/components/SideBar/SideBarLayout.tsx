@@ -9,6 +9,7 @@ import { useTheme } from "@/app/context/ThemeContext";
 import { useRef } from "react";
 import CartSvg from "@/public/cart.svg";
 import Image from "next/image";
+import BreadCrumbs from "../BreadCrumbs";
 
 export default function SidebarLayout({ children }: { children: React.ReactNode }) {
   const { sidebarOpen } = useSidebar();
@@ -40,7 +41,7 @@ export default function SidebarLayout({ children }: { children: React.ReactNode 
               scale: 0.2,
               opacity: 0.2,
             }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: animationProps.duration || 0.8, ease: "easeOut" }}
           />
         )}
         <motion.aside
@@ -76,8 +77,10 @@ export default function SidebarLayout({ children }: { children: React.ReactNode 
           >
             {sidebarOpen && <Sidebar />}
           </motion.aside>
-
-          <main className="flex-1 p-6">{children}</main>
+          <main className="flex-1 p-6">
+            <BreadCrumbs />
+            {children}
+          </main>
         </div>
       </div>
     </CartContext.Provider>

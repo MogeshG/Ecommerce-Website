@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { productType } from "../types/Products";
 import PromoBg from "@/public/promo-bg.png";
 import { motion } from "motion/react";
@@ -8,37 +8,45 @@ import ArrowHead from "@/public/right-arrow-head.svg";
 import Arrow from "@/public/right-arrow.svg";
 import { useTheme } from "../context/ThemeContext";
 import { useCartAnimation, useCartIcon } from "../context/CartContext";
+import { useRouter } from "next/navigation";
 
 const Card = ({ item }: { item: productType }) => {
   const { theme } = useTheme();
+  const router = useRouter();
   const { setAnimationProps, setImageUrl, setIsAnimating } = useCartAnimation();
   const cartIconRef = useCartIcon();
 
   const handleAddToCart = (e: React.MouseEvent<HTMLDivElement>, url: string) => {
     if (!cartIconRef?.current) return;
+    e.stopPropagation();
     const target = e.target as HTMLDivElement;
     const buttonRect = target.getBoundingClientRect();
     const cartRect = cartIconRef.current.getBoundingClientRect();
 
-    const deltaX = cartRect.left - buttonRect.left;
-    const deltaY = cartRect.top - buttonRect.top;
+    const distance = Math.sqrt((cartRect.x - buttonRect.x) ** 2 + (cartRect.y - buttonRect.y) ** 2);
+    const duration = Math.min(Math.max(distance / 800, 0.8), 2);
 
-    console.log(deltaX, deltaY, cartRect.left, cartRect.top, buttonRect.left, buttonRect.top);
+    console.log(duration);
 
-    setIsAnimating({ x: buttonRect.left, y: buttonRect.top });
-    setAnimationProps({ x: cartRect.left, y: cartRect.top });
+    setIsAnimating({ x: buttonRect.left + window.scrollX, y: buttonRect.top + window.scrollY });
+    setAnimationProps({ x: cartRect.left, y: cartRect.top, duration: duration });
     setImageUrl(url);
 
     setTimeout(() => {
       setIsAnimating({ x: 0, y: 0 });
       setAnimationProps({ x: 0, y: 0 });
-    }, 800);
+    }, duration * 1000 || 800);
+  };
+
+  const RedirectToProducts = (item: productType) => {
+    router.push(`/products/${item.category}/?name=${item.name}&id=${item.id}`);
   };
 
   return (
     <div
       key={item.id}
-      className="bg-white rounded-2xl min-w-[150px] relative items-center p-4 shadow-xl flex flex-col justify-between aspect-[10/12] w-full "
+      className="bg-white rounded-2xl min-w-[150px] relative items-center p-4 shadow-xl flex flex-col justify-between aspect-[10/12] max-w-[300px]"
+      onClick={() => RedirectToProducts(item)}
     >
       {item?.discountPercent && (
         <motion.div
@@ -55,7 +63,7 @@ const Card = ({ item }: { item: productType }) => {
       )}
       <div className="image-container aspect-square min-h-[40%] w-full">
         <Image
-          src={item.image}
+          src={item.image[0]}
           width={200}
           height={150}
           alt={item.name}
@@ -75,7 +83,10 @@ const Card = ({ item }: { item: productType }) => {
               <span className="text-[20px] font-[900]" style={{ color: theme.primary }}>
                 Rs.{(item.price - item.price * (item.discountPercent / 100)).toFixed(2)}
               </span>
-              <span className="text-[10px] mt-1 line-through h-full" style={{ color: theme.mainText }}>
+              <span
+                className="text-[10px] mt-1 line-through h-full"
+                style={{ color: theme.mainText }}
+              >
                 Rs.{(item.price * (item.discountPercent / 100)).toFixed(2)}
               </span>
             </div>
@@ -87,7 +98,7 @@ const Card = ({ item }: { item: productType }) => {
         </div>
         <motion.div
           whileHover="cart_hover"
-          onClick={(e) => handleAddToCart(e, item.image)}
+          onClick={(e) => handleAddToCart(e, item.image[0])}
           className="bg-black shadow-md flex cursor-pointer content-center text-white rounded-full px-3 py-1 justify-between"
         >
           <span className="h-full content-center">Add to cart</span>

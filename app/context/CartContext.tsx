@@ -5,6 +5,7 @@ type CartRef = null | React.RefObject<null> | React.RefObject<HTMLDivElement>;
 type positionType = {
   x: number;
   y: number;
+  duration?: number;
 };
 
 interface SidebarContextType {
@@ -21,7 +22,7 @@ export const CartAnimationContext = createContext<SidebarContextType | null>(nul
 
 export const CartAnimationProvider = ({ children }: { children: ReactNode }) => {
   const [isAnimating, setIsAnimating] = useState<positionType>({ x: 0, y: 0 });
-  const [animationProps, setAnimationProps] = useState({ x: 0, y: 0 });
+  const [animationProps, setAnimationProps] = useState<positionType>({ x: 0, y: 0 });
   const [imageUrl, setImageUrl] = useState<string>("");
 
   return (
