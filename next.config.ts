@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-//   devIndicators: "bottom-left",/
+  images: {
+    domains: ["wpkoi.com", "img.freepik.com", "w7.pngwing.com"],
+  },
 };
 
 export default nextConfig;
