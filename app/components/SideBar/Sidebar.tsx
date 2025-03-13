@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import { useTheme } from "@/app/context/ThemeContext";
+import { useSidebar } from "@/app/context/SideBarContext";
 
 type listItemsType = {
   key: number;
@@ -12,6 +13,7 @@ type listItemsType = {
 
 export default function Sidebar() {
   const { theme } = useTheme();
+  const { toggleSidebar } = useSidebar();
 
   const listItems: listItemsType[] = [
     {
@@ -39,10 +41,15 @@ export default function Sidebar() {
   ];
 
   return (
-    <nav className="p-4 ">
+    <nav className="p-4">
       <ul>
         {listItems.map((item) => (
-          <motion.li key={item.key} whileHover="hover" className="py-2 w-fit">
+          <motion.li
+            key={item.key}
+            onClick={toggleSidebar}
+            whileHover="hover"
+            className="py-2 w-fit"
+          >
             <Link href={item.url}>{item.title}</Link>
             <motion.div
               initial={{ width: 0 }}

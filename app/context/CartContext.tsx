@@ -7,15 +7,14 @@ type positionType = {
   y: number;
   duration?: number;
 };
-
-interface SidebarContextType {
+type SidebarContextType = {
   isAnimating: positionType;
   setIsAnimating: Dispatch<SetStateAction<positionType>>;
   animationProps: positionType;
   setAnimationProps: Dispatch<SetStateAction<positionType>>;
   imageUrl: string;
   setImageUrl: Dispatch<SetStateAction<string>>;
-}
+};
 
 export const CartContext = createContext<CartRef>(null);
 export const CartAnimationContext = createContext<SidebarContextType | null>(null);

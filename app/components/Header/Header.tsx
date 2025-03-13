@@ -3,14 +3,17 @@
 import { useSidebar } from "@/app/context/SideBarContext";
 import { useTheme } from "@/app/context/ThemeContext";
 import { motion } from "motion/react";
+import { usePathname } from "next/navigation";
 
 export default function Header({ Cart }: { Cart: React.ComponentType }) {
   const { toggleSidebar, sidebarOpen } = useSidebar();
   const { theme } = useTheme();
+  const pathname = usePathname();
+  const path = pathname.split("/");
 
   return (
     <header
-      className="text-white p-4 flex justify-between items-center"
+      className="text-white p-4 flex justify-between items-center sticky top-0 z-40"
       style={{ backgroundColor: theme.primary }}
     >
       <div className="flex gap-6">
@@ -68,7 +71,7 @@ export default function Header({ Cart }: { Cart: React.ComponentType }) {
           </motion.li>
         </ul>
 
-        <Cart />
+        {!path.includes("cart") && <Cart />}
         <button className="md:hidden block text-white" onClick={toggleSidebar}>
           <motion.span
             key={sidebarOpen ? "close" : "menu"}

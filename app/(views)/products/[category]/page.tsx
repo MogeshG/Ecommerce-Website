@@ -6,23 +6,31 @@ import { useTheme } from "@/app/context/ThemeContext";
 import Star from "@/public/star.svg";
 import PromoBg from "@/public/promo-bg.png";
 import { motion } from "motion/react";
-import { productType } from "@/app/types/Products";
+import { cartType, productType } from "@/app/types/Products";
 import Image from "next/image";
+import CountButton from "@/app/components/CountButton";
+import { useCartList } from "@/app/context/cartListContext";
 
 const page = () => {
   const data = useParams();
+  const { cartList, setCartList } = useCartList();
   const { theme } = useTheme();
   const searchParams = useSearchParams();
   const [currentImage, setCurrentImage] = useState<string>("");
-  const id: number = parseInt(searchParams.get("id") || "0");
+  const id: string = searchParams.get("id") || "";
   const product: productType = products.filter((data) => data.id === id)[0];
+  const current: null | cartType = cartList.filter((data) => data.id === id)[0];
 
   useEffect(() => {
     setCurrentImage(product.image[0]);
   }, [product]);
 
+  const handleAddToCart = (): void => {
+    setCartList((prev) => [...prev, { ...product, count: 1, user_id: "" }]);
+  };
+
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-1 h-fit">
       <div className="flex flex-col md:grid md:grid-cols-2 gap-3">
         <div className="flex flex-col gap-2">
           <div className="w-full relative">
@@ -49,7 +57,7 @@ const page = () => {
               </motion.div>
             )}
           </div>
-          <div className="w-full flex gap-3 overflow-auto hide-scrollbar justify-center">
+          <div className="w-full flex gap-3 flex-nowrap overflow-x-auto  hide-scrollbar">
             {product.image.map((img, index) => (
               <Image
                 key={index}
@@ -92,10 +100,16 @@ const page = () => {
           )}
 
           <div className="text-[#757575]">{product.description}</div>
-
-          <button className="w-fit bg-black text-xl text-white rounded-tr-2xl rounded-bl-2xl px-4 py-2">
-            Add to Cart
-          </button>
+          {current ? (
+            <CountButton id={current.id} count={current.count} />
+          ) : (
+            <button
+              onClick={handleAddToCart}
+              className="w-fit bg-black text-xl text-white rounded-tr-2xl rounded-bl-2xl px-4 py-2"
+            >
+              Add to Cart
+            </button>
+          )}
         </div>
       </div>
       <div

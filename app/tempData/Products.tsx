@@ -2,7 +2,7 @@ import { productType } from "../types/Products";
 
 export const products: productType[] = [
   {
-    id: 1,
+    id: "1",
     name: "Shirt",
     image: [
       "https://wpkoi.com/demos3/narmada/wp-content/uploads/sites/11/2019/06/tshirt-2.jpg",
@@ -20,7 +20,7 @@ export const products: productType[] = [
     discountPercent: 57,
   },
   {
-    id: 2,
+    id: "2",
     name: "shirt",
     image: [
       "https://img.freepik.com/free-psd/stylish-blue-plaid-shirt-men-isolated-transparent-background_191095-23044.jpg",
@@ -33,7 +33,7 @@ export const products: productType[] = [
     // discountPercent: 20,
   },
   {
-    id: 1,
+    id: "3",
     name: "Shirt",
     image: [
       "https://wpkoi.com/demos3/narmada/wp-content/uploads/sites/11/2019/06/tshirt-2.jpg",
@@ -51,7 +51,7 @@ export const products: productType[] = [
     discountPercent: 57,
   },
   {
-    id: 2,
+    id: "4",
     name: "shirt",
     image: [
       "https://img.freepik.com/free-psd/stylish-blue-plaid-shirt-men-isolated-transparent-background_191095-23044.jpg",
@@ -64,7 +64,7 @@ export const products: productType[] = [
     // discountPercent: 20,
   },
   {
-    id: 1,
+    id: "5",
     name: "Shirt",
     image: [
       "https://wpkoi.com/demos3/narmada/wp-content/uploads/sites/11/2019/06/tshirt-2.jpg",
@@ -82,7 +82,7 @@ export const products: productType[] = [
     discountPercent: 57,
   },
   {
-    id: 2,
+    id: "6",
     name: "shirt",
     image: [
       "https://img.freepik.com/free-psd/stylish-blue-plaid-shirt-men-isolated-transparent-background_191095-23044.jpg",
@@ -95,7 +95,7 @@ export const products: productType[] = [
     // discountPercent: 20,
   },
   {
-    id: 1,
+    id: "7",
     name: "Shirt",
     image: [
       "https://wpkoi.com/demos3/narmada/wp-content/uploads/sites/11/2019/06/tshirt-2.jpg",
@@ -113,7 +113,7 @@ export const products: productType[] = [
     discountPercent: 57,
   },
   {
-    id: 2,
+    id: "91",
     name: "shirt",
     image: [
       "https://img.freepik.com/free-psd/stylish-blue-plaid-shirt-men-isolated-transparent-background_191095-23044.jpg",
@@ -126,7 +126,7 @@ export const products: productType[] = [
     // discountPercent: 20,
   },
   {
-    id: 1,
+    id: "43",
     name: "Shirt",
     image: [
       "https://wpkoi.com/demos3/narmada/wp-content/uploads/sites/11/2019/06/tshirt-2.jpg",
@@ -144,7 +144,7 @@ export const products: productType[] = [
     discountPercent: 57,
   },
   {
-    id: 2,
+    id: "64",
     name: "shirt",
     image: [
       "https://img.freepik.com/free-psd/stylish-blue-plaid-shirt-men-isolated-transparent-background_191095-23044.jpg",
@@ -157,7 +157,7 @@ export const products: productType[] = [
     // discountPercent: 20,
   },
   {
-    id: 1,
+    id: "73",
     name: "Shirt",
     image: [
       "https://wpkoi.com/demos3/narmada/wp-content/uploads/sites/11/2019/06/tshirt-2.jpg",
@@ -175,7 +175,7 @@ export const products: productType[] = [
     discountPercent: 57,
   },
   {
-    id: 2,
+    id: "20",
     name: "shirt",
     image: [
       "https://img.freepik.com/free-psd/stylish-blue-plaid-shirt-men-isolated-transparent-background_191095-23044.jpg",
@@ -188,7 +188,7 @@ export const products: productType[] = [
     // discountPercent: 20,
   },
   {
-    id: 1,
+    id: "9823",
     name: "Shirt",
     image: [
       "https://wpkoi.com/demos3/narmada/wp-content/uploads/sites/11/2019/06/tshirt-2.jpg",
@@ -206,7 +206,7 @@ export const products: productType[] = [
     discountPercent: 57,
   },
   {
-    id: 2,
+    id: "243",
     name: "shirt",
     image: [
       "https://img.freepik.com/free-psd/stylish-blue-plaid-shirt-men-isolated-transparent-background_191095-23044.jpg",
@@ -219,7 +219,7 @@ export const products: productType[] = [
     // discountPercent: 20,
   },
   {
-    id: 1,
+    id: "65",
     name: "Shirt",
     image: [
       "https://wpkoi.com/demos3/narmada/wp-content/uploads/sites/11/2019/06/tshirt-2.jpg",
@@ -237,7 +237,7 @@ export const products: productType[] = [
     discountPercent: 57,
   },
   {
-    id: 2,
+    id: "926",
     name: "shirt",
     image: [
       "https://img.freepik.com/free-psd/stylish-blue-plaid-shirt-men-isolated-transparent-background_191095-23044.jpg",
@@ -249,34 +249,4 @@ export const products: productType[] = [
     description: "akjvbkjans aj asva ascas asvasvaascascasc asv  asa asa   as ks njan jasjasoaias",
     // discountPercent: 20,
   },
-  // {
-  //   id: 3,
-  //   name: "shirt",
-  //   image:
-  //     "https://w7.pngwing.com/pngs/895/199/png-transparent-spider-man-heroes-download-with-transparent-background-free-thumbnail.png",
-  //   price: 1000,
-  //   description: "ajn askjva va sva vasoiasv avsava avsasvas asv",
-  //   discountPercent: 20,
-  // },
-  // {
-  //   id: 4,
-  //   name: "shirt",
-  //   image: "",
-  //   price: 1000,
-  //   discountPercent: 20,
-  // },
-  // {
-  //   id: 5,
-  //   name: "shirt",
-  //   image: "",
-  //   price: 1000,
-  //   discountPercent: 20,
-  // },
-  // {
-  //   id: 6,
-  //   name: "shirt",
-  //   image: "",
-  //   price: 1000,
-  //   discountPercent: 20,
-  // },
 ];
