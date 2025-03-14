@@ -41,7 +41,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <nav className="p-4">
+    <nav className="p-4 fixed top-0">
       <ul>
         {listItems.map((item) => (
           <motion.li

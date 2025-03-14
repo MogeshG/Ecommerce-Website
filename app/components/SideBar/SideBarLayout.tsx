@@ -66,7 +66,7 @@ export default function SidebarLayout({ children }: { children: React.ReactNode 
           <motion.img
             src={imageUrl}
             alt="Product"
-            className="fixed w-16 h-16 object-cover z-50"
+            className="fixed w-16 h-16 object-cover z-50 "
             initial={{ x: isAnimating.x, y: isAnimating.y - window.scrollY, scale: 1, opacity: 1 }}
             animate={{
               x: animationProps.x - 20,
@@ -84,8 +84,10 @@ export default function SidebarLayout({ children }: { children: React.ReactNode 
             width: sidebarOpen ? "15rem" : "0rem",
           }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className=" overflow-hidden md:block hidden min-h-screen sticky top-0 z-40"
+          className=" overflow-hidden md:block hidden sticky top-0 z-40"
           style={{
+            position: "sticky",
+            top: 0,
             backgroundColor: theme.mainText,
             color: theme.secondaryText,
           }}
